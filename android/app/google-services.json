@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "425612938966",
+    "project_id": "shopsavvy-delivery",
+    "storage_bucket": "shopsavvy-delivery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425612938966:android:41c9cc05d99cdea8708377",
+        "android_client_info": {
+          "package_name": "com.IBMF.shop_savvy_delivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "425612938966-peehmdj6d0rgd3qmpfe96mbo8afh31t8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAypSqbFwBNzTqkWBbxYVgkKiukbI7Ry4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "425612938966-peehmdj6d0rgd3qmpfe96mbo8afh31t8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
