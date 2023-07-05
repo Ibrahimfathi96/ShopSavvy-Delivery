@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop_savvy_delivery/controller/home_controllers/home_screen_controller.dart';
-import 'package:shop_savvy_delivery/core/constants/color.dart';
 import 'package:shop_savvy_delivery/core/functions/exit_app_alert.dart';
 import 'package:shop_savvy_delivery/view/widget/home_widgets/home_bottom_appbar.dart';
 
@@ -16,19 +15,6 @@ class HomeScreen extends StatelessWidget {
     return GetBuilder<HomeScreenControllerImp>(
       builder: (controller) => Scaffold(
         bottomNavigationBar: CustomHomeBottomAppBar(),
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          centerTitle: true,
-          title: Text(
-            'ShopSavvy Orders',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: AppColors.primaryDark,
-              fontSize: 20,
-            ),
-          ),
-        ),
         body: SafeArea(
           child: WillPopScope(
             onWillPop: exitAppAlertDialog,

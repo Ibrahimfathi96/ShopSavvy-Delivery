@@ -4,13 +4,11 @@ import 'package:shop_savvy_delivery/core/class/status_request.dart';
 import 'package:shop_savvy_delivery/core/constants/color.dart';
 import 'package:shop_savvy_delivery/core/functions/handling_data.dart';
 import 'package:shop_savvy_delivery/core/services/services.dart';
-import 'package:shop_savvy_delivery/data/data_source/remote/orders/approved_orders_data.dart';
-import 'package:shop_savvy_delivery/data/data_source/remote/orders/pending_data.dart';
+import 'package:shop_savvy_delivery/data/data_source/remote/orders/accepted_orders.dart';
 import 'package:shop_savvy_delivery/data/model/orders_model.dart';
 
-class PendingOrdersController extends GetxController {
-  PendingOrdersData ordersData = PendingOrdersData(Get.find());
-  ApprovedOrdersData approvedOrdersData = ApprovedOrdersData(Get.find());
+class AcceptedOrdersController extends GetxController {
+  AcceptedOrdersData ordersData = AcceptedOrdersData(Get.find());
   MyServices services = Get.find();
   StatusRequest statusRequest = StatusRequest.none;
   List<OrdersMd> ordersList = [];
@@ -21,31 +19,11 @@ class PendingOrdersController extends GetxController {
     update();
   }
 
-  approveOrder(String userId, String orderId) async {
+  getAcceptedOrders() async {
     ordersList.clear();
     statusRequest = StatusRequest.loading;
     update();
-    var response = await approvedOrdersData.getData(
-      orderId,
-      userId,
-      services.prefs.getString("id")!,
-    );
-    statusRequest = handlingData(response);
-    if (StatusRequest.success == statusRequest) {
-      if (response['status'] == 'success') {
-        debugPrint("Approved Order Successfully!");
-      } else {
-        statusRequest = StatusRequest.failure;
-      }
-    }
-    update();
-  }
-
-  getPendingOrders() async {
-    ordersList.clear();
-    statusRequest = StatusRequest.loading;
-    update();
-    var response = await ordersData.getData();
+    var response = await ordersData.getData(services.prefs.getString("id")!);
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == 'success') {
@@ -59,7 +37,7 @@ class PendingOrdersController extends GetxController {
   }
 
   refreshOrdersPage() {
-    getPendingOrders();
+    getAcceptedOrders();
   }
 
   String printPaymentMethod(num val) {
@@ -108,7 +86,7 @@ class PendingOrdersController extends GetxController {
 
   @override
   void onInit() {
-    getPendingOrders();
+    getAcceptedOrders();
     super.onInit();
   }
 }

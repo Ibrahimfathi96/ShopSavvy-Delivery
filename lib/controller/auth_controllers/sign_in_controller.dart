@@ -69,9 +69,9 @@ class SignInControllerImp extends SignInController {
             services.prefs
                 .setString("userName", response['data']['delivery_name']);
             services.prefs.setString("step", "2");
-            String userId = services.prefs.getString("id")!;
-            FirebaseMessaging.instance.subscribeToTopic("users");
-            FirebaseMessaging.instance.subscribeToTopic("user${userId}");
+            String deliveryId = services.prefs.getString("id")!;
+            FirebaseMessaging.instance.subscribeToTopic("delivery");
+            FirebaseMessaging.instance.subscribeToTopic("delivery${deliveryId}");
             print("login-success=================");
             Get.offAllNamed(HomeScreen.routeName);
           }else{

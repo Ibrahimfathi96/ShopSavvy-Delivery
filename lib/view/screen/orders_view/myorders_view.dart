@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shop_savvy_delivery/controller/orders_controllers/accepted_controller.dart';
 import 'package:shop_savvy_delivery/controller/orders_controllers/archive_orders_controller.dart';
 import 'package:shop_savvy_delivery/controller/orders_controllers/pending_controller.dart';
 import 'package:shop_savvy_delivery/core/class/handling_data_view.dart';
 import 'package:shop_savvy_delivery/core/constants/color.dart';
-import 'package:shop_savvy_delivery/view/widget/orders_widgets/appbar_leading_button.dart';
-import 'package:shop_savvy_delivery/view/widget/orders_widgets/appbar_title.dart';
 import 'package:shop_savvy_delivery/view/widget/orders_widgets/archived_orders_card_item.dart';
 import 'package:shop_savvy_delivery/view/widget/orders_widgets/pending_orders_card_item.dart';
 
@@ -23,13 +22,17 @@ class MyOrdersView extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: false,
-          actions: [
-            AppBarItem(),
-          ],
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: AppBarTitle(),
+          centerTitle: true,
+          title: Text(
+            'ShopSavvy Orders',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: AppColors.primaryDark,
+              fontSize: 20,
+            ),
+          ),
           bottom: const TabBar(
             indicatorColor: AppColors.secondaryColor,
             labelColor: AppColors.primaryDark,
@@ -39,10 +42,10 @@ class MyOrdersView extends StatelessWidget {
             ),
             tabs: [
               Tab(
-                text: "Delivered",
+                text: "Pending",
               ),
               Tab(
-                text: "Archived",
+                text: "Accepted",
               ),
             ],
           ),
@@ -66,7 +69,7 @@ class MyOrdersView extends StatelessWidget {
             ),
             Container(
               padding: EdgeInsets.all(16),
-              child: GetBuilder<ArchiveOrdersController>(
+              child: GetBuilder<AcceptedOrdersController>(
                 builder: (controller) => HandlingDataView(
                   statusRequest: controller.statusRequest,
                   widget: ListView.builder(

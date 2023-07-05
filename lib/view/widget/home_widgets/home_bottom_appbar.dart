@@ -22,26 +22,24 @@ class CustomHomeBottomAppBar extends StatelessWidget {
               color: Colors.transparent,
               shape: CircularNotchedRectangle(),
               notchMargin: 10,
-              child: Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    ...List.generate(
-                      controller.pagesList.length,
-                      (index) {
-                        return CustomHomeBottomNavBar(
-                          onPressed: () {
-                            controller.changePage(index);
-                          },
-                          isActive:
-                              controller.currentIndex == index ? true : false,
-                          buttonText: controller.bottomAppbar[index]['title'],
-                          icon: controller.bottomAppbar[index]['icon'],
-                        );
-                      },
-                    ),
-                  ],
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ...List.generate(
+                    controller.pagesList.length,
+                    (index) {
+                      return CustomHomeBottomNavBar(
+                        onPressed: () {
+                          controller.changePage(index);
+                        },
+                        isActive:
+                            controller.currentIndex == index ? true : false,
+                        buttonText: controller.bottomAppbar[index]['title'],
+                        icon: controller.bottomAppbar[index]['icon'],
+                      );
+                    },
+                  ),
+                ],
               ),
             ),
           ),
