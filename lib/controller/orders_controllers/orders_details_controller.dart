@@ -6,7 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shop_savvy_delivery/core/class/status_request.dart';
 import 'package:shop_savvy_delivery/core/functions/handling_data.dart';
 import 'package:shop_savvy_delivery/core/services/services.dart';
-import 'package:shop_savvy_delivery/data/data_source/remote/orders/orders_details_data.dart';
+import 'package:shop_savvy_delivery/data/data_source/remote/orders/details_orders_data.dart';
 import 'package:shop_savvy_delivery/data/model/orders_details_model.dart';
 import 'package:shop_savvy_delivery/data/model/orders_model.dart';
 

@@ -6,10 +6,8 @@ class PendingOrdersData {
 
   PendingOrdersData(this.crud);
 
-  getData(String userId) async {
-    var response = await crud.postData(AppLink.pendingOrders, {
-      "userId": userId,
-    });
+  getData() async {
+    var response = await crud.postData(AppLink.pendingOrders, {});
     return response.fold((l) => l, (r) => r);
   }
 }

@@ -62,7 +62,6 @@ class ArchivedOrdersItemCard extends GetView<ArchiveOrdersController> {
             OrdersTotalPrice(
               ordersMd: ordersMd,
               isDelivered: ordersMd.ordersStatus == 0,
-              onDeletePress: () {},
               onDetailsPress: () {
                 Get.toNamed(
                   OrdersDetails.routeName,

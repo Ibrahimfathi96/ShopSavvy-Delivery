@@ -9,7 +9,7 @@ import 'package:shop_savvy_delivery/data/data_source/remote/orders/archive_order
 import 'package:shop_savvy_delivery/data/model/orders_model.dart';
 
 class ArchiveOrdersController extends GetxController {
-  ArchiveOrdersData archiveOrdersData = ArchiveOrdersData(Get.find());
+  ArchivedOrdersData archiveOrdersData = ArchivedOrdersData(Get.find());
   MyServices services = Get.find();
   StatusRequest statusRequest = StatusRequest.none;
   List<OrdersMd> ordersList = [];
@@ -37,28 +37,6 @@ class ArchiveOrdersController extends GetxController {
     }
     update();
   }
-
-  // submitRating(String orderId, String rating, String ratingComment) async {
-  //   ordersList.clear();
-  //   statusRequest = StatusRequest.loading;
-  //   update();
-  //   var response = await ratingData.getData(
-  //     orderId,
-  //     rating,
-  //     ratingComment,
-  //   );
-  //   statusRequest = handlingData(response);
-  //   if (StatusRequest.success == statusRequest) {
-  //     if (response['status'] == 'success') {
-  //       debugPrint("Submit Rating==============>Success");
-  //       getArchivedOrders();
-  //     } else {
-  //       statusRequest = StatusRequest.failure;
-  //     }
-  //   }
-  //   update();
-  // }
-
   refreshOrdersPage() {
     getArchivedOrders();
   }

@@ -6,7 +6,7 @@ import 'package:shop_savvy_delivery/core/functions/handling_data.dart';
 import 'package:shop_savvy_delivery/core/services/services.dart';
 import 'package:shop_savvy_delivery/data/data_source/remote/auth/sign_in_remote.dart';
 import 'package:shop_savvy_delivery/view/screen/auth/forget_password/forget_password.dart';
-import 'package:shop_savvy_delivery/view/screen/home.dart';
+import 'package:shop_savvy_delivery/view/screen/home/home_screen.dart';
 
 
 abstract class SignInController extends GetxController {
@@ -73,7 +73,7 @@ class SignInControllerImp extends SignInController {
             FirebaseMessaging.instance.subscribeToTopic("users");
             FirebaseMessaging.instance.subscribeToTopic("user${userId}");
             print("login-success=================");
-            Get.offAllNamed(HomeView.routeName);
+            Get.offAllNamed(HomeScreen.routeName);
           }else{
 
           }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop_savvy_delivery/core/constants/color.dart';
-import 'package:shop_savvy_delivery/view/screen/home.dart';
+import 'package:shop_savvy_delivery/view/screen/home/home_screen.dart';
 
 class AppBarItem extends StatelessWidget {
   const AppBarItem({
@@ -13,7 +13,7 @@ class AppBarItem extends StatelessWidget {
     return IconButton(
       padding: EdgeInsets.zero,
       onPressed: () {
-        Get.offAllNamed(HomeView.routeName);
+        Get.offAllNamed(HomeScreen.routeName);
       },
       icon: Icon(
         Icons.home_outlined,

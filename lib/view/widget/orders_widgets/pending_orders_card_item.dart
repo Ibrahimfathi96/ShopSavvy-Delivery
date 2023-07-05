@@ -61,9 +61,6 @@ class PendingOrdersItemCard extends GetView<PendingOrdersController> {
             OrdersTotalPrice(
               ordersMd: ordersMd,
               isDelivered: ordersMd.ordersStatus == 0,
-              onDeletePress: () {
-                controller.deleteOrder(ordersMd.ordersId.toString());
-              },
               onDetailsPress: () {
                 Get.toNamed(
                   OrdersDetails.routeName,

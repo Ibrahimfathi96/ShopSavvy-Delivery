@@ -1,13 +1,14 @@
 import 'package:shop_savvy_delivery/core/class/crud.dart';
 import 'package:shop_savvy_delivery/link_api.dart';
 
-class DeleteOrderData {
+class DoneOrdersData {
   Crud crud;
 
-  DeleteOrderData(this.crud);
+  DoneOrdersData(this.crud);
 
-  getData(String orderId) async {
-    var response = await crud.postData(AppLink.deleteOrder, {
+  getData(String orderId, String userId,) async {
+    var response = await crud.postData(AppLink.doneOrders, {
+      "userId": userId,
       "orderId": orderId,
     });
     return response.fold((l) => l, (r) => r);
