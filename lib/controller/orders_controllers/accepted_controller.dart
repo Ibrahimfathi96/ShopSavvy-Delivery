@@ -5,10 +5,12 @@ import 'package:shop_savvy_delivery/core/constants/color.dart';
 import 'package:shop_savvy_delivery/core/functions/handling_data.dart';
 import 'package:shop_savvy_delivery/core/services/services.dart';
 import 'package:shop_savvy_delivery/data/data_source/remote/orders/accepted_orders.dart';
+import 'package:shop_savvy_delivery/data/data_source/remote/orders/done_orders_data.dart';
 import 'package:shop_savvy_delivery/data/model/orders_model.dart';
 
 class AcceptedOrdersController extends GetxController {
   AcceptedOrdersData ordersData = AcceptedOrdersData(Get.find());
+  DoneOrdersData doneOrdersData = DoneOrdersData(Get.find());
   MyServices services = Get.find();
   StatusRequest statusRequest = StatusRequest.none;
   List<OrdersMd> ordersList = [];
@@ -29,6 +31,25 @@ class AcceptedOrdersController extends GetxController {
       if (response['status'] == 'success') {
         List data = response['data'];
         ordersList.addAll(data.map((e) => OrdersMd.fromJson(e)));
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+    }
+    update();
+  }
+
+  deliveryDone(String orderId, String userId) async {
+    ordersList.clear();
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await doneOrdersData.getData(
+      orderId,
+      userId,
+    );
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == 'success') {
+        getAcceptedOrders();
       } else {
         statusRequest = StatusRequest.failure;
       }

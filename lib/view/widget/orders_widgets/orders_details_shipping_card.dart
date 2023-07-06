@@ -33,7 +33,7 @@ class OrdersDetailsShippingCard extends GetView<OrdersDetailsController> {
             height: 300,
             width: double.infinity,
             child: GoogleMap(
-              mapType: MapType.hybrid,
+              mapType: MapType.normal,
               markers: controller.markers.toSet(),
               initialCameraPosition: controller.cameraPosition!,
               onMapCreated: (GoogleMapController mapController) {

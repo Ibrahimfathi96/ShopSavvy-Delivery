@@ -22,7 +22,8 @@ class OrdersDetailsController extends GetxController {
   String? lat;
   String? lng;
   CameraPosition? cameraPosition ;
-  late Completer<GoogleMapController> completerController;
+  final Completer<GoogleMapController> completerController =
+  Completer<GoogleMapController>();
 
   initData() {
     if(ordersMd.ordersType == 0){
@@ -60,7 +61,6 @@ class OrdersDetailsController extends GetxController {
   }
   @override
   void onInit() {
-    completerController = Completer<GoogleMapController>();
     ordersMd = Get.arguments['ordersMd'];
     initData();
     getOrdersDetailsData();

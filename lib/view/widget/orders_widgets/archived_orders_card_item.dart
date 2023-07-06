@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
-import 'package:shop_savvy_delivery/controller/orders_controllers/archive_orders_controller.dart';
+import 'package:shop_savvy_delivery/controller/orders_controllers/accepted_controller.dart';
+import 'package:shop_savvy_delivery/core/constants/color.dart';
 import 'package:shop_savvy_delivery/data/model/orders_model.dart';
 import 'package:shop_savvy_delivery/view/screen/orders_view/orders_details.dart';
 import 'package:shop_savvy_delivery/view/widget/orders_widgets/orders_id_and_date_time.dart';
 import 'package:shop_savvy_delivery/view/widget/orders_widgets/orders_texts.dart';
 import 'package:shop_savvy_delivery/view/widget/orders_widgets/orders_total_price.dart';
 
-class ArchivedOrdersItemCard extends GetView<ArchiveOrdersController> {
+class AcceptedOrdersItemCard extends GetView<AcceptedOrdersController> {
   final OrdersMd ordersMd;
 
-  const ArchivedOrdersItemCard({
+  const AcceptedOrdersItemCard({
     super.key,
     required this.ordersMd,
   });
@@ -55,8 +56,7 @@ class ArchivedOrdersItemCard extends GetView<ArchiveOrdersController> {
             ),
             OrdersRowOfText(
               text1: "Order Status   : ",
-              text2:
-              controller.printOrderStatus(ordersMd.ordersStatus!),
+              text2: controller.printOrderStatus(ordersMd.ordersStatus!),
             ),
             Divider(thickness: 2),
             OrdersTotalPrice(
@@ -74,6 +74,30 @@ class ArchivedOrdersItemCard extends GetView<ArchiveOrdersController> {
               color: controller.orderStatusColor(ordersMd.ordersStatus!),
               text2: "${ordersMd.ordersTotalPrice!.round()} EGP",
             ),
+            if (ordersMd.ordersStatus == 3)
+              Center(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    backgroundColor: AppColors.primaryDark,
+                    minimumSize: Size(MediaQuery.sizeOf(context).width / 6, 40),
+                  ),
+                  onPressed: () {
+                    controller.deliveryDone(ordersMd.ordersId.toString(),
+                        ordersMd.ordersUserId.toString());
+                  },
+                  child: Text(
+                    "Delivered",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
           ],
         ),
       ),

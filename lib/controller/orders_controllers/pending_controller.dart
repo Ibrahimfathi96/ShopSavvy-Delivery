@@ -33,6 +33,7 @@ class PendingOrdersController extends GetxController {
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == 'success') {
+        getPendingOrders();
         debugPrint("Approved Order Successfully!");
       } else {
         statusRequest = StatusRequest.failure;

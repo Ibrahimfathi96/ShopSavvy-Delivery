@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop_savvy_delivery/controller/orders_controllers/accepted_controller.dart';
-import 'package:shop_savvy_delivery/controller/orders_controllers/archive_orders_controller.dart';
 import 'package:shop_savvy_delivery/controller/orders_controllers/pending_controller.dart';
 import 'package:shop_savvy_delivery/core/class/handling_data_view.dart';
 import 'package:shop_savvy_delivery/core/constants/color.dart';
@@ -16,7 +15,7 @@ class MyOrdersView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(PendingOrdersController());
-    Get.put(ArchiveOrdersController());
+    Get.put(AcceptedOrdersController());
     return DefaultTabController(
       initialIndex: 1,
       length: 2,
@@ -75,7 +74,7 @@ class MyOrdersView extends StatelessWidget {
                   widget: ListView.builder(
                     physics: const BouncingScrollPhysics(),
                     itemCount: controller.ordersList.length,
-                    itemBuilder: (context, index) => ArchivedOrdersItemCard(
+                    itemBuilder: (context, index) => AcceptedOrdersItemCard(
                       ordersMd: controller.ordersList[index],
                     ),
                   ),
