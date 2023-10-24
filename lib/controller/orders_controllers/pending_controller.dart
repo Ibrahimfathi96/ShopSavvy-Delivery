@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shop_savvy_delivery/controller/tracking_controller.dart';
 import 'package:shop_savvy_delivery/core/class/status_request.dart';
 import 'package:shop_savvy_delivery/core/constants/color.dart';
 import 'package:shop_savvy_delivery/core/functions/handling_data.dart';
@@ -30,9 +31,11 @@ class PendingOrdersController extends GetxController {
       userId,
       services.prefs.getString("id")!,
     );
+
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == 'success') {
+        TrackingController trackingController = Get.put(TrackingController());
         getPendingOrders();
         debugPrint("Approved Order Successfully!");
       } else {

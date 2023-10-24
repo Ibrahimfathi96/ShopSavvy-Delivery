@@ -14,8 +14,8 @@ class MyOrdersView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(PendingOrdersController());
-    Get.put(AcceptedOrdersController());
+    PendingOrdersController pendingOrdersController = Get.put(PendingOrdersController());
+    AcceptedOrdersController acceptedOrdersController = Get.put(AcceptedOrdersController());
     return DefaultTabController(
       initialIndex: 1,
       length: 2,
@@ -23,7 +23,19 @@ class MyOrdersView extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          centerTitle: true,
+          actions: [
+            IconButton(
+              onPressed: () {
+                pendingOrdersController.refreshOrdersPage();
+                acceptedOrdersController.refreshOrdersPage();
+              },
+              icon: Icon(
+                Icons.refresh_outlined,
+                size: 30,
+                color: AppColors.primaryDark,
+              ),
+            ),
+          ],
           title: Text(
             'ShopSavvy Orders',
             style: TextStyle(
